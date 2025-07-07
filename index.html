@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<title>50 Special - Lùnapop</title>
+<style>
+    body {
+      background-color: #f8f9fa; font-family: Arial; margin: 20px; }
+    input[type="text"] { margin-bottom: 5px; width: 300px; }
+    .correct { color: green; }
+    .wrong { color: red; }
+</style>
+</head>
+<body>
+<div style="margin-bottom: 20px;">
+<img src="https://tse3.mm.bing.net/th/id/OIP.sw9HLVUL-_Gnq_HD3QGsYQHaD4?pid=Api" alt="Vespa d'epoca" style="width:100%; max-height:300px; object-fit:cover;">
+</div>
+<h1>50 Special – Lùnapop 🎵</h1>
+ 
+  <h2>🎧 Ascolta la canzone</h2>
+<p><a href="https://youtu.be/n2FFJ_ltaiU?si=8VOC71Ey3FaTWe6G" target="_blank">Clicca qui per ascoltare la canzone su YouTube</a></p>
+ 
+  <h2>✍️ Completa il testo</h2>
+<p><i>(Scrivi la parola mancante in ciascun campo)</i></p>
+<p>
+    Vespe truccate anni '60<br>
+<input type="text" id="i1"> in centro sfiorando i 90<br>
+    Rosse di fuoco, <input type="text" id="i2"> la danza<br>
+    Di frecce con dietro attaccata una targa<br>
+    Dammi una Special, l'estate che <input type="text" id="i3"><br>
+    Dammi una Vespa e ti <input type="text" id="i4"> in vacanza<br>
+    Ma quanto è bello andare in giro con le ali sotto ai piedi<br>
+    Se <input type="text" id="i5"> una Vespa Special che ti toglie i problemi<br>
+    Ma quanto è bello andare in giro per i colli bolognesi<br>
+    Se <input type="text" id="i6"> una Vespa Special che ti toglie i problemi<br>
+    E la scuola non <input type="text" id="i7"><br>
+    Ma una Vespa, una donna non <input type="text" id="i8"><br>
+    Ho una Vespa, domenica è già<br>
+    E una Vespa mi porterà, mi porterà, mi porterà<br>
+    Fuori città, fuori città, fuori città, ah ah ah ah<br>
+    Fuori città, fuori città, ah ah ah ah<br>
+<input type="text" id="i9"> di fretta dalla mia stanza<br>
+    A marce ingranate dalla prima alla quarta<br>
+    Devo fare in fretta <input type="text" id="i10"> andare a una festa<br>
+    Fammi fare un giro prima sulla mia Vespa<br>
+    Dammi una Special, l'estate che <input type="text" id="i11"><br>
+    Dammi una Vespa e ti <input type="text" id="i12"> in vacanza<br>
+    Ma quanto è bello andare in giro con le ali sotto ai piedi<br>
+    Se hai una Vespa Special che ti <input type="text" id="i13"> i problemi<br>
+    Ma quanto è bello andare in giro per i colli bolognesi<br>
+    Se hai una Vespa Special che ti toglie i problemi<br>
+    E la scuola non va<br>
+    Ma una Vespa, una donna non ho<br>
+<input type="text" id="i14"> una Vespa, domenica è già<br>
+    E una Vespa mi porterà, mi porterà, mi porterà<br>
+    Fuori città...
+</p>
+ 
+  <h2>📋 Nella canzone vengono usati alcuni verbi legati alle macchine. Inserisci i verbi nelle frasi. A volte devi coniugarli al tempo giusto (presente, imperativo e passato prossimo)</h2>
+<p><b>Verbi:</b> frenare, accelerare, sorpassare, fare il pieno, mettere in moto, mettere la freccia, inserire, rallentare</p>
+<ol>
+<li>Questa notte ha fatto così freddo che stamattina non sono riuscita a <input type="text" id="v1"> la macchina.</li>
+<li>Marina, hai superato i 50, <input type="text" id="v2">!</li>
+<li><input type="text" id="v3">! Se vai così veloce, investi quel povero gatto!</li>
+<li>Signor Masini, <input type="text" id="v4"> un po', per favore, altrimenti non arriviamo più.</li>
+<li>Quando voglio <input type="text" id="v5"> la prima, metto sempre la terza con il rischio di distruggere il motore.</li>
+<li>Io <input type="text" id="v6"> un po' prima per evitare che mi vengano addosso.</li>
+<li>Quando parto per un lungo viaggio, mi assicuro sempre di <input type="text" id="v7">.</li>
+<li>Ma perché <input type="text" id="v8"> quell'auto a quel modo. Ma sei pazzo?</li>
+</ol>
+ 
+  <br><br>
+<button onclick="controlla()">Invia risposte</button>
+<button onclick="ripeti()">Ripeti esercizio</button>
+ 
+  <div id="feedback"></div>
+ 
+  <script>
+    function controlla() {
+      const risposte = {
+        i1: "girano", i2: "comincia", i3: "avanza", i4: "porto",
+        i5: "hai", i6: "hai", i7: "va", i8: "ho", i9: "esco",
+        i10: "devo", i11: "avanza", i12: "porto", i13: "toglie", i14: "ho",
+        v1: "mettere in moto", v2: "rallenta", v3: "frena",
+        v4: "acceleri", v5: "inserire", v6: "metto la freccia",
+        v7: "fare il pieno", v8: "hai sorpassato"
+      };
+ 
+      let fb = [];
+      let punteggio = 0;
+      let totale = Object.keys(risposte).length;
+ 
+      for (let id in risposte) {
+        const userInput = document.getElementById(id).value.trim().toLowerCase();
+        if (userInput === risposte[id]) {
+          fb.push(`<p class='correct'>✔ ${id}: corretto</p>`);
+          punteggio++;
+        } else {
+          fb.push(`<p class='wrong'>✖ ${id}: la risposta corretta è "${risposte[id]}"</p>`);
+        }
+      }
+ 
+      fb.push(`<h3>Punteggio finale: ${punteggio} su ${totale}</h3>`);
+      document.getElementById("feedback").innerHTML = fb.join('');
+    }
+ 
+    function ripeti() {
+      const inputs = document.querySelectorAll('input[type="text"]');
+      inputs.forEach(input => input.value = '');
+      document.getElementById("feedback").innerHTML = '';
+    }
+</script>
+</body>
+</html>
